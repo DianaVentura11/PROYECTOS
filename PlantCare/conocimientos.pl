@@ -1,0 +1,63 @@
+% BASE DE CONOCMIENTOS DE PLANTCARE
+%R1: posible falta de agua
+recomendacion(r1, 'posible falta de agua',
+              'Revisa si tu planta necesita riego.',
+              'Las hojas estan marchitas, el suelo esta seco y el riego es poco frecuente.') :-
+    sintoma(hojas_marchitas),
+    humedad(baja),
+    riego(poco_frecuente).
+
+%R2: Posible exceso de agua
+recomendacion(r2, 'posible exceso de agua',
+              'revisa el drenaje y evita agregar mas agua por ahora.',
+              'El suelo tiene demasiada humedad y las hojas estan marchitas.') :-
+    sintoma(hoja_marchitas),
+    humedad(alta).
+%R3: Hojas amarillas y suelo humedo
+recomendacion(r3, 'Posible exceso de humedad',
+              'Revisa el drenaje y la frecuencia de riego.',
+              'Las hojas amarillas pueden relacionarse con un exceso de humedad.') :-
+    sintoma(hoja_amarilla),
+    humedad(alta).
+%R4: Hojas amarillas y suelo seco
+recomendacion(r4, 'Posible problema de riego',
+             'Revisa la humedad y las necesidades de tu planta.',
+             'Las hojas amarillas y la baja humedad justifican el riego.'):-
+    sintoma(hojas_amarillas),
+    humedad(baja).
+% R5: Crecimiento lento y poca luz
+recomendacion(r5, 'Posible falta de iluminacion',
+              'Comprueba si tu planta necesita un lugar con mas luz.',
+              'La planta crece lentamente y recibe poca iluminacion.') :-
+     sintoma(crecimiento_lento),
+     iluminacion(baja).
+% R6: Crecimiento lento con condiciones adecuadas
+recomendacion(r6, 'Revisar otras causas',
+              'Comprueba las necesidades de nutrientes y los cuidados de tu especie.',
+              'La humedad y la iluminacion son adecuadas, pero la planta crece lentamente.') :-
+    sintoma(crecimiento_lento),
+    humedad(adecuada),
+    iluminacion(adecuada).
+% R7: Hojas amarillas con humedad adecuada
+recomendacion(r7, 'Revisar otras condiciones',
+               'Revisa la iluminacion, los nutrientes y las necesidades de tu especie.',
+              'La humedad es adecuada, por lo que las hojas amarillas pueden tener otras causas.') :-
+    sintoma(hojas_amarillas),
+    humedad(adecuada).
+% R8: Hojas marchitas con humedad adecuada
+recomendacion(r8, 'Investigar otras posibles causas',
+              'Revisa la iluminacion, las raices y las condiciones ambientales.',
+              'Las hojas estan marchitas, pero la humedad del suelo es adecuada.') :-
+    sintoma(hojas_marchitas),
+     humedad(adecuada).
+% R9: Planta sin sintomas
+recomendacion(r9, 'Cuidados aparentemente adecuados',
+              'Mantén los cuidados apropiados para tu especie.',
+              'No se observan sintomas y la humedad y la iluminacion son adecuadas.') :-
+     sintoma(sin_sintomas),
+     humedad(adecuada),
+     iluminacion(adecuada).
+
+
+
+
