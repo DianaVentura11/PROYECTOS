@@ -1,0 +1,96 @@
+<h2>Bitácora de actividades</h2>
+
+<p>
+    Historial de acciones realizadas por los usuarios del sistema.
+</p>
+
+<hr>
+
+<table border="1" cellpadding="10" cellspacing="0">
+
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Correo</th>
+            <th>Acción</th>
+            <th>Actividad</th>
+            <th>Descripción</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {{#each registros}}
+
+        <tr>
+
+            <!-- Usuario -->
+            <td>
+                {{#if usuario}}
+                    {{usuario.nombre}}
+                {{else}}
+                    Usuario no disponible
+                {{/if}}
+            </td>
+
+            <!-- Correo -->
+            <td>
+                {{#if usuario}}
+                    {{usuario.correo}}
+                {{else}}
+                    -
+                {{/if}}
+            </td>
+
+            <!-- Acción realizada -->
+            <td>
+                {{accion}}
+            </td>
+
+            <!-- Nombre de la actividad -->
+            <td>
+                {{#if datosNuevos.nombre}}
+                    {{datosNuevos.nombre}}
+                {{else}}
+                    {{#if datosAnteriores.nombre}}
+                        {{datosAnteriores.nombre}}
+                    {{else}}
+                        -
+                    {{/if}}
+                {{/if}}
+            </td>
+
+            <!-- Descripción -->
+            <td>
+                {{#if datosNuevos.descripcion}}
+                    {{datosNuevos.descripcion}}
+                {{else}}
+                    {{#if datosAnteriores.descripcion}}
+                        {{datosAnteriores.descripcion}}
+                    {{else}}
+                        -
+                    {{/if}}
+                {{/if}}
+            </td>
+
+            <!-- Fecha -->
+            <td>
+                {{createdAt}}
+            </td>
+
+        </tr>
+
+        {{else}}
+
+        <tr>
+            <td colspan="6">
+                No hay registros en la bitácora.
+            </td>
+        </tr>
+
+        {{/each}}
+
+    </tbody>
+
+</table>

@@ -1,0 +1,75 @@
+<h2>Consultar estado de una actividad</h2>
+
+
+<form action="/estado" method="GET">
+
+    <label>
+        Nombre de la actividad:
+    </label>
+
+    <input
+        type="text"
+        name="nombre"
+        placeholder="Escribe el nombre"
+        required
+    >
+
+    <button type="submit">
+        Consultar estado
+    </button>
+
+</form>
+
+
+{{#if actividad}}
+
+    <hr>
+
+    <h3>Resultado</h3>
+
+    <p>
+        <strong>Nombre:</strong>
+        {{actividad.nombre}}
+    </p>
+
+
+    <p>
+        <strong>Descripción:</strong>
+        {{actividad.descripcion}}
+    </p>
+
+
+    <p>
+        <strong>Estado:</strong>
+
+        {{#if actividad.estado}}
+
+            Completada
+
+        {{else}}
+
+            Pendiente
+
+        {{/if}}
+
+    </p>
+
+{{/if}}
+
+
+{{#if mensaje}}
+
+    <hr>
+
+    <p>
+        {{mensaje}}
+    </p>
+
+{{/if}}
+
+
+<br>
+
+<a href="/">
+    Regresar al inicio
+</a>

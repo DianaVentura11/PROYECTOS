@@ -1,0 +1,144 @@
+<h2>Agenda de actividades</h2>
+
+<h3>Agregar actividad</h3>
+
+<form action="/actividad/add" method="POST">
+    <input type="hidden" name="_csrf" value="{{@root.csrfToken}}">
+    <div>
+
+        <label>Nombre:</label>
+
+        <input
+            type="text"
+            name="nombre"
+            placeholder="Escribe el nombre"
+            required
+        >
+
+    </div>
+
+    <br>
+
+    <div>
+
+        <label>Descripción:</label>
+
+        <textarea
+            name="descripcion"
+            placeholder="Escribe la descripción"
+            required
+        ></textarea>
+
+    </div>
+
+    <br>
+
+    <div>
+        <label>Fecha límite (opcional):</label>
+        <input type="date" name="fechaLimite">
+    </div>
+
+    <br>
+
+    <button type="submit">
+        Guardar
+    </button>
+
+</form>
+
+
+<hr>
+
+<h3>Descargar reporte PDF</h3>
+
+<form action="/actividades/reporte" method="GET">
+    <label for="filtroReporte">Actividades que deseas incluir:</label>
+
+    <select name="filtro" id="filtroReporte">
+        <option value="todas">Todas las actividades</option>
+        <option value="pendientes">Solo pendientes</option>
+        <option value="completadas">Solo completadas</option>
+    </select>
+
+    <button type="submit">Descargar reporte</button>
+</form>
+
+<hr>
+
+<h3>Actividades registradas</h3>
+
+{{> listas}}
+
+
+<hr>
+
+<h3>Enviar actividades por correo</h3>
+
+<p>
+    Recibe en tu correo electrónico una lista de tus actividades pendientes.
+</p>
+
+<p>
+    <strong>Correo de destino:</strong>
+    {{correoUsuario}}
+</p>
+
+<form id="formCorreo" action="/correo/pendientes" method="POST">
+
+    <input type="hidden" name="_csrf" value="{{@root.csrfToken}}">
+
+    <button type="submit" id="btnCorreo">
+        Enviar pendientes
+    </button>
+
+</form>
+
+<p id="mensajeCorreo" role="status" aria-live="polite"></p>
+
+<script>
+    const formCorreo = document.getElementById("formCorreo");
+    const btnCorreo = document.getElementById("btnCorreo");
+    const mensajeCorreo = document.getElementById("mensajeCorreo");
+
+    formCorreo.addEventListener("submit", async (event) => {
+
+        event.preventDefault();
+
+        // Deshabilitar el botón mientras se envía
+        btnCorreo.disabled = true;
+        btnCorreo.textContent = "Enviando...";
+        mensajeCorreo.textContent = "Procesando solicitud...";
+
+        try {
+
+            // Enviar el formulario mediante fetch
+            const respuesta = await fetch(formCorreo.action, {
+                method: "POST",
+                body: new URLSearchParams(new FormData(formCorreo)),
+                credentials: "same-origin"
+            });
+
+            // Obtener el mensaje del controlador
+            const mensaje = await respuesta.text();
+
+            if (!respuesta.ok) {
+                throw new Error(mensaje);
+            }
+
+            // Mostrar resultado sin salir de la agenda
+            mensajeCorreo.textContent = mensaje;
+
+        } catch (error) {
+
+            mensajeCorreo.textContent =
+                error.message || "No se pudo enviar el correo.";
+
+        } finally {
+
+            // Volver a habilitar el botón
+            btnCorreo.disabled = false;
+            btnCorreo.textContent = "Enviar pendientes";
+
+        }
+    });
+</script>

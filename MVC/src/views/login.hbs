@@ -1,0 +1,31 @@
+
+<h2>Iniciar sesión</h2>
+
+{{#if mensaje}}
+    <p style="color: red;">{{mensaje}}</p>
+{{/if}}
+
+<form action="/login" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <div>
+        <label>Correo electrónico:</label>
+        <input type="email" name="correo" required>
+    </div>
+
+    <br>
+
+    <div>
+        <label>Contraseña:</label>
+        <input type="password" name="password" required>
+    </div>
+
+    <br>
+
+    <button type="submit">Ingresar</button>
+
+</form>
+
+<p>
+    ¿No tienes cuenta?
+    <a href="/registro">Registrarse</a>
+</p>

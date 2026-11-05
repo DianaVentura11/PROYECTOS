@@ -1,0 +1,55 @@
+<table border="1">
+
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {{#each actividades}}
+
+        <tr>
+
+            <td>{{@index}}</td>
+
+            <td>{{nombre}}</td>
+
+            <td>{{descripcion}}</td>
+
+
+            <td>
+
+                <a href="/edit/{{_id}}">
+                    <button type="button">
+                        Editar
+                    </button>
+                </a>
+
+
+                <form
+                    action="/actividad/eliminar/{{_id}}"
+                    method="POST"
+                    style="display:inline;"
+                    onsubmit="return confirm('¿Seguro que quieres eliminar esta actividad?');"
+                >
+    <input type="hidden" name="_csrf" value="{{@root.csrfToken}}">
+                    <button type="submit">
+                        Eliminar
+                    </button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+        {{/each}}
+
+    </tbody>
+
+</table>

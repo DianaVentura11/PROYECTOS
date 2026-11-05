@@ -1,0 +1,82 @@
+<h2>Editar actividad</h2>
+
+<form action="/actividad/editar/{{actividad._id}}" method="POST">
+    <input type="hidden" name="_csrf" value="{{@root.csrfToken}}">
+    <div>
+        <label>Nombre:</label>
+
+        <input
+            type="text"
+            name="nombre"
+            value="{{actividad.nombre}}"
+            required
+        >
+    </div>
+
+    <br>
+
+    <div>
+        <label>Descripción:</label>
+
+        <textarea
+            name="descripcion"
+            required
+        >{{actividad.descripcion}}</textarea>
+    </div>
+
+    <br>
+
+    <div>
+        <label>Estado:</label>
+
+        <select name="estado">
+
+            <option
+                value="false"
+                {{#unless actividad.estado}}selected{{/unless}}
+            >
+                Pendiente
+            </option>
+
+            <option
+                value="true"
+                {{#if actividad.estado}}selected{{/if}}
+            >
+                Completada
+            </option>
+
+        </select>
+    </div>
+
+    <br>
+
+    <button type="submit">
+        Guardar cambios
+    </button>
+
+</form>
+
+
+<hr>
+
+
+<h3>Eliminar actividad</h3>
+
+<form
+    action="/actividad/eliminar/{{actividad._id}}"
+    method="POST"
+    onsubmit="return confirm('¿Seguro que quieres eliminar esta actividad?');"
+>
+<input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <button type="submit">
+        Eliminar actividad
+    </button>
+
+</form>
+
+
+<br>
+
+<a href="/">
+    Regresar
+</a>
