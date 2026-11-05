@@ -1,4 +1,4 @@
-Sistema de Agenda de Actividades
+# Sistema de Agenda de Actividades
 
 Aplicación web desarrollada con Node.js, Express.js y MongoDB, utilizando el patrón de arquitectura MVC (Modelo-Vista-Controlador), que permite a los usuarios administrar sus actividades de manera organizada.
 
