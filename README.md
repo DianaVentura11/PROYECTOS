@@ -1,12 +1,28 @@
-Práctica CatAPI – Consumo de servicios web
-Desarrollo de una aplicación web que integra TheCatAPI, un servicio externo que proporciona imágenes de gatos mediante una API REST.
-La aplicación realiza solicitudes HTTP utilizando Fetch API y procesa las respuestas en formato JSON para mostrar imágenes dinámicamente en una interfaz web.
+## Portafolio de proyectos
 
-Tecnologías utilizadas:
-- HTML5
-- CSS3
+Soy estudiante de **Ingeniería en Sistemas Computacionales**, interesada en el desarrollo de software, la programación y las tecnologías de la información. En este repositorio comparto algunos de los proyectos que he desarrollado durante mi formación académica, en los cuales he puesto en práctica mis conocimientos y habilidades en diferentes áreas de la programación.
+
+## ¿Qué encontrarás aquí?
+
+Proyectos relacionados con:
+- Desarrollo de aplicaciones web.
+- Desarrollo backend y frontend.
+- Consumo e integración de APIs.
+- Diseño y gestión de bases de datos.
+- Desarrollo de servicios web.
+- Inteligencia artificial y sistemas expertos.
+- Generación de documentos y reportes.
+
+## Tecnologías y herramientas
+Algunas de las tecnologías que he utilizado en mis proyectos son:
+
 - JavaScript
-- Fetch API
-- TheCatAPI
-- JSON
+- Node.js
+- Express.js
+- HTML5 y CSS3
+- MongoDB
+- SQL
+- Git y GitHub
+- SWI-Prolog
+- SOAP y GraphQL
 
